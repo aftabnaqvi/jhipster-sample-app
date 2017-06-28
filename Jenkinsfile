@@ -1,6 +1,11 @@
 pipeline {
   agent any
   stages {
+    stage('Checking out code') {
+      steps {
+        checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'Github-password', url: 'https://github.com/aftabnaqvi/jhipster-sample-app.git']]])
+      }
+    }
     stage('Build') {
       steps {
         sh 'echo Build'
