@@ -3,6 +3,7 @@ pipeline {
   stages {
     stage('Checking out code') {
       steps {
+          sh 'echo cloning repo'
         checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'Github-password', url: 'https://github.com/aftabnaqvi/jhipster-sample-app.git']]])
       }
     }
