@@ -10,18 +10,17 @@ pipeline {
     stage('Build') {
       steps {
         sh 'echo Build'
+        sh './mvnw -Pprod clean package'
       }
     }
     stage('Backend') {
       steps {
         parallel(
           "Unit Test": {
-            sh 'echo Unit'
-            
+              sh 'echo Unit'          
           },
           "Performance": {
-            sh 'echo Performance'
-            
+            sh 'echo Performance'          
           }
         )
       }
