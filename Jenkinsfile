@@ -10,7 +10,6 @@ pipeline {
     stage('Build') {
       steps {
         sh 'echo Build'
-        mvnw -Pprod clean package
       }
     }
     stage('Backend') {
